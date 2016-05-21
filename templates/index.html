@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Blog</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+<link href="{{ url_for('static' , filename = 'default.css') }}" rel="stylesheet" type="text/css" media="all" />
+<link href="{{ url_for('static' , filename = 'fonts.css') }}" rel="stylesheet" type="text/css" media="all" />
+<style type="text/css">
+    #header-wrapper
+	{
+		overflow: hidden;
+		background: url({{ url_for('static' , filename = 'pic01.jpg') }}) no-repeat center;
+		background-size: 100% auto;
+	}
+
+
+</style>
+<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+
+</head>
+<body>
+
+<div id="header-wrapper">
+    {% if session['username'] %}
+    <span class="logout" ><a href="/logout">LOG OUT</a> </span>
+    {% endif %}
+	<div id="header" class="container">
+		<div id="logo">
+			<h1><a href="#">Blog</a></h1>
+		</div>
+		<div id="menu">
+			<ul>
+				<li><a href="#" accesskey="1" title="">Homepage</a></li>
+				<li><a href="/login" accesskey="2" title="">Login/SingUp</a></li>
+				<li><a href="/manage" accesskey="3" title="">Manage Your Blog</a></li>
+				<li><a href="/blogs" accesskey="4" title="">Blogs</a></li>
+				<li><a href="/about" accesskey="5" title="">Contact Us</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="banner" class="container">
+		<p> Welcome To Blog !  </p>
+        <p> Build And Manage Your Own Blog !</p>
+	</div>
+</div>
+<div id="page-wrapper">
+	<div id="featured" class="container">
+		<div class="title">
+			<h2>Let's Get Started ;)</h2>
+		</div>
+
+	</div>
+</div>
+
+</body>
+</html>

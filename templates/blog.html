@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{{ username }}Blog</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+<link href="{{ url_for('static' , filename = 'default.css') }}" rel="stylesheet" type="text/css" media="all" />
+<link href="{{ url_for('static' , filename = 'fonts.css') }}" rel="stylesheet" type="text/css" media="all" />
+<style type="text/css">
+    #header-wrapper
+	{
+		overflow: hidden;
+		background: url({{ url_for('static' , filename = 'pic01.jpg') }}) no-repeat center;
+		background-size: 100% auto;
+	}
+
+
+</style>
+<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+
+</head>
+<body>
+<div id="header-wrapper">
+    {% if session['username'] %}
+    <span class="logout" ><a href="/logout">LOG OUT</a> </span>
+    {% endif %}
+	<div id="header" class="container">
+		<div id="logo">
+			<h1><a href="#">Blog</a></h1>
+		</div>
+		<div id="menu">
+			<ul>
+				<li><a href="/" accesskey="1" title="">Homepage</a></li>
+				<li><a href="/login" accesskey="2" title="">Login/SingUp</a></li>
+				<li><a href="/manage" accesskey="3" title="">Manage Your Blog</a></li>
+				<li><a href="/blogs" accesskey="4" title="">Blogs</a></li>
+				<li><a href="/about" accesskey="5" title="">Contact Us</a></li>
+			</ul>
+		</div>
+	</div>
+
+</div>
+<div id="page-wrapper">
+	<div id="featured" class="container" >
+    	<div id="featured" class="container">
+		<div class="title">
+			<h2>{{ username }}'s Blog Posts</h2>
+		</div>
+
+	</div>
+    <center>
+        <div class="centeraldiv"  >
+        {% for post in posts_list %}
+            <div class="apost" align="left">
+            <div class="toppost">
+                <center> {{ post[1] }}</center>
+                </div>
+            <div id="{{ post[0] }}" class="middlepost">
+                 {{ post[2] }}
+                {% if scroll %}
+                <script>
+                    document.getElementById('{{ scroll }}').scrollIntoView();
+                    // or
+                    document.location.hash = '#' + '{{ scroll }}';
+                </script>
+                {% endif %}
+            </div>
+            <div class="downpost" style="position:static;">
+                <span style="float: left;" align="center">
+
+                <a href="/comments/{{  post[0] }}" target="_blank"><img src="{{ url_for('static' , filename ='comment.jpg') }}" alt="comment"/></a>
+                </span>
+                <center>
+                <span style="float: left;" align="right">
+                <form action="http://localhost:5000/like" method="post" >
+                    {{ post[3] }}
+                    <input type="hidden" name="like" value="up">
+                    <input type="hidden" name="id" value="{{ post[0] }}">
+                    <input type="image" src="{{ url_for('static' , filename = 'like.png') }}" style="width: 40px;height: 40px;" alt="submit">
+                </form>
+                    </span>
+
+                <span style="float: left;" align="left">
+                <form action="http://localhost:5000/like" method="post" >
+                    {{ post[4] }}
+                    <input type="hidden" name="like" value="down">
+                    <input type="hidden" name="id" value="{{ post[0] }}">
+                    <input type="image" src="{{ url_for('static' , filename = 'dislike.png') }}" style="width: 40px;height: 40px;" alt="submit">
+                </form>
+                    </span>
+                    </center>
+            </div>
+            </div>
+            <br><br>
+        {% endfor %}
+        </div>
+    </center>
+    </div>
+
+</div>
+
+</body>
+</html>

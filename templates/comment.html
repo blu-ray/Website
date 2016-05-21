@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comment</title>
+</head>
+<body>
+<center>
+<div class="centraldiv" style="background-color: lightgray;width: 300px;font-size: smaller" >
+{% if comments %}
+{% for comment in comments %}
+    {{ comment[2] }}
+    <br>
+     <a href="/replies/{{  comment[0] }}" target="_blank">reply</a>
+    <br>
+    <hr>
+{% endfor %}
+{% endif %}
+<form action="http://localhost:5000/comments/{{ postid }}" method="post">
+    <p>Type your comment:</p>
+    <textarea name="commm"> </textarea>
+    <p><input type="submit" value="done"></p>
+</form>
+</div>
+</center>
+</body>
+</html>

@@ -1,0 +1,15 @@
+.bluesen{
+
+    background-color: aquamarine;
+    font-family: "B Mitra";
+
+}
+
+body {
+    color: blue;
+}
+
+input[type=text] {
+    background-color: #3CBC8D;
+    color: white;
+}
