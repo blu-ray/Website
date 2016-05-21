@@ -13,11 +13,11 @@ def save_im(matrix):
                 #result[x,y] = (255,255,255)
             else:
                 result[x,y] = (0,0,0)
-    myimage.save("C:\Users\Capricorn\Desktop\Project3-Website\static\Captcha.jpg")
+    myimage.save("/home/soheil/mysite/Website/static/Captcha.jpg")
     #myimage.show()
 
 def get_letter_matrix(a):
-    img_filename = "C:\Users\Capricorn\Desktop\Project3-Website\Words\%s.jpg" %a
+    img_filename = "/home/soheil/mysite/Website/Words/%s.jpg" %a
     im = Image.open(img_filename)
     pixel = im.load()
     imageW = im.size[0]
@@ -75,6 +75,7 @@ def get_letter_matrix(a):
                 enmatrix[y-y1][x-x1] = 1
     return enmatrix
 def make_captcha(a,b,c):
+    #return 0
     mat1=get_letter_matrix(a)
     mat2=get_letter_matrix(b)
     mat3=get_letter_matrix(c)

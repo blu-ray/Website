@@ -1,7 +1,7 @@
 import MySQLdb
 
 def connect():
-    return MySQLdb.connect("localhost" , "soheil" , "soheil" , "users")
+    return MySQLdb.connect("soheil.mysql.pythonanywhere-services.com" , "soheil" , "akbar123456" , "soheil$users")
 
 def make_users_table():
     con = connect()
@@ -68,7 +68,7 @@ def insert_user(username , password):
     cur = con.cursor()
     #cur.execute('INSERT INTO users (username , password) VALUES ("'+username+'","'+password+'")' )
     #cur.execute("INSERT INTO users(username , password) VALUES('sss','ssss')"  )
-    cur.execute("SELECT * FROM users WHERE username=%s" ,(username))
+    cur.execute("SELECT * FROM users WHERE username='%s'" %(username))
     if cur.fetchall():
         #print "username is allready taken"
         con.close()
@@ -123,7 +123,7 @@ def edit_post(username,post_id,post_title,post_text):
 def validate_user(username,password):
     con = connect()
     cur = con.cursor()
-    cur.execute("SELECT * FROM users WHERE username=%s" ,(username))
+    cur.execute("SELECT * FROM users WHERE username='%s'" %(username))
     tup = cur.fetchall()
     if tup:
         if tup[0][2]== password :

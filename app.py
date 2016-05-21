@@ -134,9 +134,10 @@ def manage():
 
 @app.route('/login',methods = ['POST', 'GET'])
 def login(message = "" , mcolor = None):
+
     if 'username' in session:
         return render_template('errorshower.html',error='You are already logged in!')
-
+    #return "hiiii"
     if request.method == 'POST':
         user = request.form['un']
         password = request.form['pass']
@@ -158,10 +159,10 @@ def login(message = "" , mcolor = None):
         get_captcha()
         return render_template("login.html",message=message,mcolor=mcolor,src = url_for('static' , filename = 'Captcha.jpg')+"?"+str(time.time()) )
     else:
-        #print("h")
+        #return "h"
         get_captcha()
         return render_template("login.html",message = message, mcolor = mcolor,src = url_for('static' , filename = 'Captcha.jpg')+"?"+str(time.time()))
-
+        return "hi"
     #return render_template("login.html",message = message, mcolor = mcolor)
 
 

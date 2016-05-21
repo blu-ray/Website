@@ -52,7 +52,7 @@
         <center>
   <div id="formmm">
     {% if thispost %}
-    <form id="posting" class="formos"  action="http://localhost:5000/edit" method="post">
+    <form id="posting" class="formos"  action="http://soheil.pythonanywhere.com/edit" method="post">
         <span style="font-family: 'Bradley Hand ITC';font-size: larger;">Edit Your Post </span>
         <br><br><br>
       <p><input name="title" type="text" placeholder="title" value="{{ thispost[1] }}"/></p>
@@ -61,7 +61,7 @@
       <p><button class="button">Edit</button></p>
     </form>
       {% else %}
-        <form id="posting" class="formos"  action="http://localhost:5000/manage" method="post">
+        <form id="posting" class="formos"  action="http://soheil.pythonanywhere.com/manage" method="post">
         <span style="font-family: 'Bradley Hand ITC';font-size: larger;">Write a new post </span>
         <br><br><br>
       <p><input name="title" type="text" placeholder="title" value="{{ title }}"/></p>
@@ -80,13 +80,13 @@
                 <div style="float: left;margin-left: 20px;border-color: sandybrown;border-style: solid;" align="center">
                    <center> {{ post[1] }} </center><br>
                 <center>
-                <form action="http://localhost:5000/delete" method="post">
+                <form action="http://soheil.pythonanywhere.com/delete" method="post">
                     <input type="hidden" name="delete" value={{ post[0] }}>
                     <input type="image" src="{{ url_for('static' , filename = 'delete.png') }} " style="width:40px;height: 40px;" alt="delete">
 
                 </form>
 
-                    <form action="http://localhost:5000/edit" method="post">
+                    <form action="http://soheil.pythonanywhere.com/edit" method="post">
                     <input type="hidden" name="edit" value={{ post[0] }}>
                     <input type="image" src="{{ url_for('static' , filename = 'edit.png') }} " style="width:40px;height: 40px;" alt="edit">
 

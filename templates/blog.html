@@ -53,7 +53,7 @@
 	</div>
     <center>
         <div class="centeraldiv"  >
-        {% for post in posts_list %}
+        {% for post in posts_list[::-1] %}
             <div class="apost" align="left">
             <div class="toppost">
                 <center> {{ post[1] }}</center>
@@ -75,7 +75,7 @@
                 </span>
                 <center>
                 <span style="float: left;" align="right">
-                <form action="http://localhost:5000/like" method="post" >
+                <form action="http://soheil.pythonanywhere.com/like" method="post" >
                     {{ post[3] }}
                     <input type="hidden" name="like" value="up">
                     <input type="hidden" name="id" value="{{ post[0] }}">
@@ -84,7 +84,7 @@
                     </span>
 
                 <span style="float: left;" align="left">
-                <form action="http://localhost:5000/like" method="post" >
+                <form action="http://soheil.pythonanywhere.com/like" method="post" >
                     {{ post[4] }}
                     <input type="hidden" name="like" value="down">
                     <input type="hidden" name="id" value="{{ post[0] }}">
